@@ -23,19 +23,22 @@
   box-shadow: 0 -4px 0 4px var(--blue);
 }
 
+/* ---------- Top row: logo, controller, HUD ---------- */
+
 .marquee-top {
   position: relative;
   z-index: 1;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
   gap: 16px;
-  flex-wrap: wrap;
 }
 
 /* ---------- Logo ---------- */
 
 .logo {
+  position: relative;
+  justify-self: start;
   margin: 0;
 }
 
@@ -70,49 +73,51 @@
     drop-shadow(4px 4px 0 var(--blue));
 }
 
-/* ---------- Racing stripes ---------- */
+/* Pixel sparkles: one square plus four copies make a little star */
+.sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: currentColor;
+  box-shadow:
+    4px 0 currentColor,
+    -4px 0 currentColor,
+    0 4px currentColor,
+    0 -4px currentColor;
+  pointer-events: none;
+}
 
-.marquee-stripes {
+.sparkle-1 { top: -10px; left: -12px; color: var(--orange); }
+.sparkle-2 { top: 34%; right: -20px; color: var(--blue); }
+.sparkle-3 { bottom: -8px; left: 42%; color: var(--orange); }
+.sparkle-4 { top: 10px; right: 18%; color: #fff; transform: scale(0.75); }
+
+/* ---------- Controller, right beside the logo ---------- */
+
+.controller {
+  display: block;
+  justify-self: start;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  margin-left: 12px;
+  filter: drop-shadow(4px 4px 0 var(--blue));
+}
+
+.pad-outline { fill: #000; }
+.pad-body    { fill: var(--orange); }
+.pad-light   { fill: #ffb366; }
+.pad-blue    { fill: var(--blue); }
+
+/* ---------- HUD: sign-in, guide counter, sound ---------- */
+
+.marquee-hud {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  margin: 22px calc(-1 * var(--pad)) 0;
+  align-items: flex-end;
+  align-self: start;
+  gap: 14px;
 }
-
-.marquee-stripes span {
-  display: block;
-  height: 8px;
-  background: var(--orange);
-}
-
-.marquee-stripes span:nth-child(2) { height: 6px; background: var(--blue); }
-.marquee-stripes span:nth-child(3) { height: 4px; background: var(--orange); }
-.marquee-stripes span:nth-child(4) { height: 2px; background: var(--blue); }
-
-.marquee-tagline {
-  position: relative;
-  z-index: 1;
-  max-width: 60ch;
-  margin: 16px 0 0;
-  color: #c8c8c8;
-}
-
-/* ---------- Neon grid floor (still, shorter) ---------- */
-
-.marquee-grid {
-  height: 50px;
-  margin: 8px calc(-1 * var(--pad)) 0;
-  background-image:
-    linear-gradient(rgba(45, 156, 255, 0.7) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(45, 156, 255, 0.7) 1px, transparent 1px);
-  background-size: 48px 14px;
-  transform: perspective(90px) rotateX(40deg);
-  transform-origin: center bottom;
-  -webkit-mask-image: linear-gradient(to top, #000 30%, transparent);
-  mask-image: linear-gradient(to top, #000 30%, transparent);
-}
-
-/* ---------- Sign-in inside the marquee ---------- */
 
 .marquee .button {
   border-color: #000;
@@ -134,6 +139,217 @@
 
 .marquee .user-name {
   color: #fff;
+}
+
+.p1-badge {
+  padding: 1px 6px;
+  background: var(--blue);
+  color: #000;
+  font-family: var(--font-pixel);
+  font-size: 0.8rem;
+}
+
+/* Arcade high-score style counter */
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-family: var(--font-pixel);
+  line-height: 1;
+}
+
+.score-label {
+  color: var(--blue);
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.score-value {
+  margin-top: 4px;
+  color: var(--orange);
+  font-size: 2.2rem;
+  text-shadow: 3px 3px 0 #5a2d00;
+}
+
+.sound-toggle {
+  padding: 4px 10px;
+  border: 2px solid var(--blue);
+  border-radius: 4px;
+  background: #000;
+  color: #c8c8c8;
+  font-family: var(--font-pixel);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.sound-toggle[aria-pressed='true'] {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+/* ---------- Menu buttons ---------- */
+
+.marquee-nav {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.marquee-nav a {
+  padding: 6px 14px;
+  border: 3px solid var(--blue);
+  border-radius: 4px;
+  background: #000;
+  box-shadow: 3px 3px 0 var(--orange);
+  color: #fff;
+  font-family: var(--font-pixel);
+  text-decoration: none;
+}
+
+.marquee-nav a:hover {
+  border-color: var(--orange);
+}
+
+.marquee-nav a:active {
+  transform: translate(3px, 3px);
+  box-shadow: none;
+}
+
+.marquee-nav a.active {
+  border-color: #000;
+  background: var(--blue);
+  color: #000;
+}
+
+/* ---------- Racing stripes ---------- */
+
+.marquee-stripes {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 22px calc(-1 * var(--pad)) 0;
+}
+
+.marquee-stripes span {
+  display: block;
+  height: 8px;
+  background: var(--orange);
+}
+
+.marquee-stripes span:nth-child(2) { height: 6px; background: var(--blue); }
+.marquee-stripes span:nth-child(3) { height: 4px; background: var(--orange); }
+.marquee-stripes span:nth-child(4) { height: 2px; background: var(--blue); }
+
+/* ---------- "New" bar ---------- */
+
+.now-playing {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+  padding: 8px 12px;
+  border: 2px solid var(--orange);
+  background: rgba(255, 140, 26, 0.08);
+}
+
+.now-label {
+  flex-shrink: 0;
+  padding: 2px 8px;
+  background: var(--orange);
+  color: #000;
+  font-family: var(--font-pixel);
+}
+
+.now-playing a {
+  min-width: 0;
+  overflow: hidden;
+  color: #fff;
+  font-family: var(--font-pixel);
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.now-playing a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Tagline, platforms, tip ---------- */
+
+.marquee-tagline {
+  position: relative;
+  z-index: 1;
+  max-width: 60ch;
+  margin: 18px auto 0;
+  color: #c8c8c8;
+  text-align: center;
+}
+
+.platforms {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.platforms li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: #c8c8c8;
+  font-family: var(--font-pixel);
+  font-size: 0.85rem;
+}
+
+.platforms svg {
+  width: 40px;
+  height: auto;
+}
+
+.px-blue   { fill: var(--blue); }
+.px-orange { fill: var(--orange); }
+.px-black  { fill: #000; }
+
+.loading-tip {
+  position: relative;
+  z-index: 1;
+  max-width: 60ch;
+  margin: 14px auto 0;
+  color: #9a9a9a;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.loading-tip strong {
+  color: var(--blue);
+  font-family: var(--font-pixel);
+  font-weight: normal;
+}
+
+/* ---------- Neon grid floor (still) ---------- */
+
+.marquee-grid {
+  height: 50px;
+  margin: 8px calc(-1 * var(--pad)) 0;
+  background-image:
+    linear-gradient(rgba(45, 156, 255, 0.7) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45, 156, 255, 0.7) 1px, transparent 1px);
+  background-size: 48px 14px;
+  transform: perspective(90px) rotateX(40deg);
+  transform-origin: center bottom;
+  -webkit-mask-image: linear-gradient(to top, #000 30%, transparent);
+  mask-image: linear-gradient(to top, #000 30%, transparent);
 }
 
 /* ---------- Search bar attached under the marquee ---------- */
@@ -166,51 +382,9 @@
   margin-top: 28px;
 }
 
-/* ---------- Phones ---------- */
+/* ---------- Medium screens: controller moves under the logo ---------- */
 
-@media (max-width: 600px) {
-  .marquee {
-    --pad: 18px;
-  }
-}
-
-/* ---------- Controller in the center of the banner ---------- */
-
-.marquee-top {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-}
-
-.marquee-top .logo {
-  justify-self: start;
-}
-
-.marquee-top .user-menu {
-  justify-self: end;
-  align-self: start;
-}
-
-.controller {
-  display: block;
-  width: 180px;
-  height: 180px;
-  filter: drop-shadow(4px 4px 0 var(--blue));
-}
-
-.pad-outline { fill: #000; }
-.pad-body    { fill: var(--orange); }
-.pad-light   { fill: #ffb366; }
-.pad-blue    { fill: var(--blue); }
-
-/* Centered tagline */
-.marquee-tagline {
-  margin: 16px auto 0;
-  text-align: center;
-}
-
-/* Phones: controller drops below the title */
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .marquee-top {
     grid-template-columns: 1fr auto;
   }
@@ -219,36 +393,34 @@
     grid-column: 1 / -1;
     grid-row: 2;
     justify-self: center;
-    width: 200px;
-    height: 100px;
+    max-width: 240px;
+    margin-left: 0;
   }
 }
 
-/* ---------- Final controller size and centering ---------- */
-.marquee-top {
-  grid-template-columns: auto 1fr auto;
-}
+/* ---------- Phones ---------- */
 
-.marquee-top .controller {
-  width: 300px;
-  height: auto;
-  justify-self: center;
-}
+@media (max-width: 600px) {
+  .marquee {
+    --pad: 18px;
+  }
 
-@media (max-width: 900px) {
   .marquee-top {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr;
   }
 
-  .marquee-top .controller {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    width: 220px;
+  .marquee-hud {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
   }
-}
 
-/* Controller sits next to the title */
-.marquee-top .controller {
-  justify-self: start;
-  margin-left: 12px;
+  .controller {
+    max-width: 200px;
+  }
+
+  .platforms {
+    gap: 20px;
+  }
 }

@@ -1,0 +1,11 @@
+/* Styles for the Browse games and Submit a guide pages */
+
+.page-title {
+  margin: 0 0 18px;
+  font-size: 1.8rem;
+  text-shadow: 3px 3px 0 var(--orange);
+}
+
+.guide-section p + p {
+  margin-top: 10px;
+}

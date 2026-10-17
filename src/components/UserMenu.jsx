@@ -25,7 +25,7 @@ export default function UserMenu() {
     return (
       <div className="user-menu">
         <button type="button" className="button" onClick={handleSignIn}>
-          Sign in with Google
+          Press start to sign in
         </button>
         {error && <p className="auth-error">{error}</p>}
       </div>
@@ -34,6 +34,7 @@ export default function UserMenu() {
 
   return (
     <div className="user-menu">
+      <span className="p1-badge">P1</span>
       {user.photoURL && (
         <img
           src={user.photoURL}

@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router'
-import { fetchGuides } from '../data/guidesApi'
+import { useState } from 'react'
+import { Link, useSearchParams } from 'react-router'
+import { useGuides } from '../data/useGuides'
 import TypeBadge from '../components/TypeBadge'
 
 function GuideCard({ guide }) {
@@ -28,16 +28,17 @@ function GuideCard({ guide }) {
 }
 
 export default function HomePage() {
-  const [guides, setGuides] = useState(null)
-  const [error, setError] = useState(null)
+  const { guides, error } = useGuides()
   const [search, setSearch] = useState('')
-  const [gameFilter, setGameFilter] = useState('all')
 
-  useEffect(() => {
-    fetchGuides()
-      .then(setGuides)
-      .catch((err) => setError(err.message))
-  }, [])
+  // The game filter lives in the URL (/?game=Elden%20Ring) so the
+  // Browse games page can link straight to a filtered list.
+  const [searchParams, setSearchParams] = useSearchParams()
+  const gameFilter = searchParams.get('game') ?? 'all'
+
+  function setGameFilter(value) {
+    setSearchParams(value === 'all' ? {} : { game: value })
+  }
 
   if (error) {
     return <p className="no-results">Couldn't load guides: {error}</p>

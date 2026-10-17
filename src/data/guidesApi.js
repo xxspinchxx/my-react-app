@@ -1,10 +1,20 @@
 import { collection, doc, getDoc, getDocs, orderBy, query } from 'firebase/firestore'
 import { db } from '../firebase'
 
+// Several parts of the page need the guide list, so it's fetched once and shared
+let guidesRequest = null
+
 // Get every guide, sorted by game name
-export async function fetchGuides() {
-  const snapshot = await getDocs(query(collection(db, 'guides'), orderBy('game')))
-  return snapshot.docs.map((d) => ({ id: d.id, ...d.data() }))
+export function fetchGuides() {
+  if (!guidesRequest) {
+    guidesRequest = getDocs(query(collection(db, 'guides'), orderBy('game')))
+      .then((snapshot) => snapshot.docs.map((d) => ({ id: d.id, ...d.data() })))
+      .catch((err) => {
+        guidesRequest = null // let the next attempt try again
+        throw err
+      })
+  }
+  return guidesRequest
 }
 
 // Get one guide by its id, or null if it doesn't exist
