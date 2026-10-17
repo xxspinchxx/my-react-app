@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router'
-import { guides } from '../data/guides'
+import { fetchGuides } from '../data/guidesApi'
 import TypeBadge from '../components/TypeBadge'
 
 function GuideCard({ guide }) {
@@ -28,19 +28,35 @@ function GuideCard({ guide }) {
 }
 
 export default function HomePage() {
+  const [guides, setGuides] = useState(null)
+  const [error, setError] = useState(null)
   const [search, setSearch] = useState('')
   const [gameFilter, setGameFilter] = useState('all')
 
+  useEffect(() => {
+    fetchGuides()
+      .then(setGuides)
+      .catch((err) => setError(err.message))
+  }, [])
+
+  if (error) {
+    return <p className="no-results">Couldn't load guides: {error}</p>
+  }
+
+  if (!guides) {
+    return <p className="no-results">Loading guides...</p>
+  }
+
   const games = [...new Set(guides.map((guide) => guide.game))].sort()
 
-  const query = search.trim().toLowerCase()
+  const queryText = search.trim().toLowerCase()
   const visibleGuides = guides.filter((guide) => {
     const matchesGame = gameFilter === 'all' || guide.game === gameFilter
     const matchesSearch =
-      query === '' ||
-      guide.title.toLowerCase().includes(query) ||
-      guide.game.toLowerCase().includes(query) ||
-      guide.summary.toLowerCase().includes(query)
+      queryText === '' ||
+      guide.title.toLowerCase().includes(queryText) ||
+      guide.game.toLowerCase().includes(queryText) ||
+      guide.summary.toLowerCase().includes(queryText)
     return matchesGame && matchesSearch
   })
 

@@ -1,12 +1,29 @@
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router'
-import { guides } from '../data/guides'
+import { fetchGuide } from '../data/guidesApi'
 import TypeBadge from '../components/TypeBadge'
 
 export default function GuidePage() {
   const { guideId } = useParams()
-  const guide = guides.find((g) => g.id === guideId)
+  // undefined = still loading, null = not found
+  const [guide, setGuide] = useState(undefined)
+  const [error, setError] = useState(null)
 
-  if (!guide) {
+  useEffect(() => {
+    fetchGuide(guideId)
+      .then(setGuide)
+      .catch((err) => setError(err.message))
+  }, [guideId])
+
+  if (error) {
+    return <p className="no-results">Couldn't load this guide: {error}</p>
+  }
+
+  if (guide === undefined) {
+    return <p className="no-results">Loading guide...</p>
+  }
+
+  if (guide === null) {
     return (
       <div className="guide-page">
         <p>Guide not found.</p>
