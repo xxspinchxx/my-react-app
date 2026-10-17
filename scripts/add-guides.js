@@ -4,48 +4,25 @@ import { db } from '../src/firebase.js'
 
 const newGuides = [
   {
-    id: 'pokemon-black-video',
-    game: 'Pokémon Black and White',
-    title: 'Pokémon Black Full Video Walkthrough',
+    id: 'elden-ring-video-part-1',
+    game: 'Elden Ring',
+    title: 'Elden Ring Video Walkthrough Part 1: Getting Started',
     type: 'video',
-    author: 'xspinchx',
-    videoId: 'URo4ZuxdBm8',
-    summary: 'Nintendo DS. A complete playthrough of Pokémon Black from start to finish.',
+    author: 'FightinCowboy',
+    videoId: 'PN7YFKHOR9Y',
+    summary: 'The first part of a full series covering everything in the Lands Between.',
     sections: [
       {
-        heading: 'Choose your starter',
-        text: 'Your journey begins in Nuvema Town, where you pick Snivy, Tepig, or Oshawott.',
+        heading: 'Create your Tarnished',
+        text: 'Pick a starting class and keepsake, then work through the opening tutorial area.',
       },
       {
-        heading: 'Visit Black City',
-        text: 'Black City is only in Pokémon Black. It has its own shops and trainers to battle.',
+        heading: 'Take your first steps in Limgrave',
+        text: 'Reach the first Site of Grace and start exploring the open world.',
       },
       {
-        heading: 'Meet Reshiram',
-        text: 'Reshiram, the legendary on the Black box, plays a key part in the story\'s finale.',
-      },
-    ],
-  },
-  {
-    id: 'pokemon-white-video',
-    game: 'Pokémon Black and White',
-    title: 'Pokémon White Full Video Walkthrough',
-    type: 'video',
-    author: 'xspinchx',
-    videoId: 'mTNaHiiuQI8',
-    summary: 'Nintendo DS. A complete, no-commentary playthrough of Pokémon White.',
-    sections: [
-      {
-        heading: 'Choose your starter',
-        text: 'Your journey begins in Nuvema Town, where you pick Snivy, Tepig, or Oshawott.',
-      },
-      {
-        heading: 'Explore White Forest',
-        text: 'White Forest is only in Pokémon White. It is home to wild Pokémon you won\'t find in Black.',
-      },
-      {
-        heading: 'Meet Zekrom',
-        text: 'Zekrom, the legendary on the White box, plays a key part in the story\'s finale.',
+        heading: 'Keep going with the series',
+        text: 'This is Part 1. FightinCowboy continues the walkthrough in later videos on his channel.',
       },
     ],
   },
