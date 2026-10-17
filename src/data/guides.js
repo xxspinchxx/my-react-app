@@ -1,4 +1,3 @@
-cat > src/data/guides.js <<'EOF'
 // Sample guides. Later these will come from Firestore instead.
 export const guides = [
   {
