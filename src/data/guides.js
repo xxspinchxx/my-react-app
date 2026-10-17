@@ -31,7 +31,7 @@ export const guides = [
   {
     id: 'hollow-knight-wiki',
     game: 'Hollow Knight',
-    title: 'Community map and boss guide',
+    title: 'Community Map and Boss Guide',
     type: 'link',
     author: 'IGN',
     url: 'https://www.ign.com/wikis/hollow-knight',
