@@ -4,43 +4,48 @@ import { db } from '../src/firebase.js'
 
 const newGuides = [
   {
-    id: 'pokemon-black-white-walkthrough',
+    id: 'pokemon-black-video',
     game: 'Pokémon Black and White',
-    title: 'Pokémon Black and White Full Walkthrough',
-    type: 'link',
-    author: 'Bulbapedia',
-    url: 'https://bulbapedia.bulbagarden.net/wiki/Appendix:Black_and_White_walkthrough',
-    summary: 'Nintendo DS. Every route, gym, and town in Unova, chapter by chapter.',
-  },
-  {
-    id: 'pokemon-firered-leafgreen-walkthrough',
-    game: 'Pokémon FireRed and LeafGreen',
-    title: 'Pokémon FireRed and LeafGreen Full Walkthrough',
-    type: 'link',
-    author: 'Bulbapedia',
-    url: 'https://bulbapedia.bulbagarden.net/wiki/Appendix:FireRed_and_LeafGreen_walkthrough',
-    summary: 'Game Boy Advance. The full Kanto journey, from Pallet Town through the Sevii Islands.',
-  },
-  {
-    id: 'pokemon-black-white-video',
-    game: 'Pokémon Black and White',
-    title: 'Pokémon Black and White Full Video Walkthrough',
+    title: 'Pokémon Black Full Video Walkthrough',
     type: 'video',
     author: 'xspinchx',
-    videoId: 'J9brjnDG820',
-    summary: 'Nintendo DS. A complete playthrough of the main story with no commentary.',
+    videoId: 'URo4ZuxdBm8',
+    summary: 'Nintendo DS. A complete playthrough of Pokémon Black from start to finish.',
     sections: [
       {
         heading: 'Choose your starter',
         text: 'Your journey begins in Nuvema Town, where you pick Snivy, Tepig, or Oshawott.',
       },
       {
-        heading: 'Earn the eight Unova badges',
-        text: 'Travel across Unova, challenging each Gym Leader and building up your team along the way.',
+        heading: 'Visit Black City',
+        text: 'Black City is only in Pokémon Black. It has its own shops and trainers to battle.',
       },
       {
-        heading: 'Stop Team Plasma',
-        text: 'Uncover Team Plasma\'s plans, then take on the Elite Four for the final showdown.',
+        heading: 'Meet Reshiram',
+        text: 'Reshiram, the legendary on the Black box, plays a key part in the story\'s finale.',
+      },
+    ],
+  },
+  {
+    id: 'pokemon-white-video',
+    game: 'Pokémon Black and White',
+    title: 'Pokémon White Full Video Walkthrough',
+    type: 'video',
+    author: 'xspinchx',
+    videoId: 'mTNaHiiuQI8',
+    summary: 'Nintendo DS. A complete, no-commentary playthrough of Pokémon White.',
+    sections: [
+      {
+        heading: 'Choose your starter',
+        text: 'Your journey begins in Nuvema Town, where you pick Snivy, Tepig, or Oshawott.',
+      },
+      {
+        heading: 'Explore White Forest',
+        text: 'White Forest is only in Pokémon White. It is home to wild Pokémon you won\'t find in Black.',
+      },
+      {
+        heading: 'Meet Zekrom',
+        text: 'Zekrom, the legendary on the White box, plays a key part in the story\'s finale.',
       },
     ],
   },
