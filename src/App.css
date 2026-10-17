@@ -57,8 +57,8 @@
 }
 
 .badge-written { background: #2d4a7a; }
-.badge-video   { background: #7a2d4a; }
-.badge-link    { background: #2d7a55; }
+.badge-video   { background: #2d9cff; }
+.badge-link    { background: #ff8c1a; }
 
 .site-header h1 a,
 .guide-card h2 a {
