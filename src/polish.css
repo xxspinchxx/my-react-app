@@ -1,0 +1,57 @@
+/* ---------- Rounded corners everywhere ---------- */
+
+.page .marquee {
+  border-radius: 22px;
+}
+
+/* Banner + search bar stay joined as one rounded frame */
+.page .marquee:has(+ .filters) {
+  border-radius: 22px 22px 0 0;
+}
+
+.page .marquee + .filters {
+  border-radius: 0 0 22px 22px;
+}
+
+.page .guide-card,
+.page .guide-section,
+.page .video-wrapper {
+  border-radius: 16px;
+}
+
+.page .video-wrapper iframe,
+.page .guide-section img {
+  border-radius: 10px;
+}
+
+.page .filters input,
+.page .filters select,
+.page .button,
+.page .marquee-nav a,
+.page .now-playing {
+  border-radius: 12px;
+}
+
+.page .now-label {
+  border-radius: 8px;
+}
+
+.page .badge,
+.page .sound-toggle,
+.page .p1-badge {
+  padding-inline: 10px;
+  border-radius: 999px;
+}
+
+.page .avatar {
+  border-radius: 50%;
+}
+
+/* ---------- Extra sparkles across the banner ---------- */
+
+.marquee-sparkles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}

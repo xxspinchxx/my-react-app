@@ -5,6 +5,7 @@ import GuidePage from './pages/GuidePage'
 import GamesPage from './pages/GamesPage'
 import SubmitPage from './pages/SubmitPage'
 import SiteHeader from './components/SiteHeader'
+import './polish.css'
 
 function App() {
   return (
