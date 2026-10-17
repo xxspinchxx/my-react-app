@@ -1,35 +1,22 @@
+cat > src/data/guides.js <<'EOF'
 // Sample guides. Later these will come from Firestore instead.
 export const guides = [
   {
-    id: 'elden-ring-margit',
+    id: 'elden-ring-full-walkthrough',
     game: 'Elden Ring',
-    title: 'How to beat Margit, the Fell Omen',
-    type: 'written',
-    author: 'xspinchx',
-    summary: 'Best spirit ash, attack timings, and where to stand.',
-    sections: [
-      {
-        heading: 'Prepare before the fight',
-        text: 'Upgrade your main weapon and level up a few times in Limgrave first. Rest at the Site of Grace right outside the fog wall.',
-        image: '/screenshots/margit-1.png',
-      },
-      {
-        heading: 'Summon help',
-        text: 'Use a spirit ash as soon as the fight starts. It pulls Margit away from you so you can get free hits.',
-      },
-      {
-        heading: 'Watch for delayed attacks',
-        text: 'Margit holds his swings longer than you expect. Wait for the weapon to actually move before you dodge.',
-      },
-    ],
+    title: 'Elden Ring Full Written Walkthrough',
+    type: 'link',
+    author: 'Fextralife',
+    url: 'https://eldenring.wiki.fextralife.com/Walkthrough',
+    summary: 'Step-by-step route through every area, boss, and NPC questline.',
   },
   {
     id: 'totk-great-sky-island',
     game: 'Zelda: Tears of the Kingdom',
-    title: 'Great Sky Island full walkthrough',
+    title: 'Zelda: Tears of the Kingdom Full Walkthrough',
     type: 'video',
     author: 'xspinchx',
-    summary: 'Every shrine and chest in the opening area.',
+    summary: 'The complete main story from start to finish.',
     videoId: 'U8mo25SNznY',
     sections: [
       {
@@ -52,3 +39,4 @@ export const guides = [
     summary: 'A thorough wiki covering every area and boss.',
   },
 ]
+EOF
