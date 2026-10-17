@@ -38,4 +38,3 @@ export const guides = [
     summary: 'A thorough wiki covering every area and boss.',
   },
 ]
-EOF
