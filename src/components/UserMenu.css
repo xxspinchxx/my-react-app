@@ -1,0 +1,50 @@
+.site-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.user-name {
+  font-size: 0.9rem;
+}
+
+.button {
+  padding: 8px 14px;
+  border: 1px solid #555;
+  border-radius: 8px;
+  background: #2d4a7a;
+  color: inherit;
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.button:hover {
+  filter: brightness(1.15);
+}
+
+.button-secondary {
+  background: transparent;
+}
+
+.auth-error {
+  width: 100%;
+  margin: 0;
+  color: #f08080;
+  font-size: 0.85rem;
+}
