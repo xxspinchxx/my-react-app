@@ -1,46 +1,26 @@
+import { Link, Route, Routes } from 'react-router'
 import './App.css'
-import { guides } from './data/guides'
-
-const TYPE_LABELS = {
-  written: 'Written guide',
-  video: 'Video',
-  link: 'External link',
-}
-
-function GuideCard({ guide }) {
-  return (
-    <article className="guide-card">
-      <p className="guide-game">{guide.game}</p>
-      <h2>{guide.title}</h2>
-      <p className="guide-summary">{guide.summary}</p>
-      <div className="guide-meta">
-        <span className={`badge badge-${guide.type}`}>
-          {TYPE_LABELS[guide.type]}
-        </span>
-        <span>by {guide.author}</span>
-      </div>
-      {guide.type === 'link' && (
-        <a href={guide.url} target="_blank" rel="noreferrer">
-          Open guide ↗
-        </a>
-      )}
-    </article>
-  )
-}
+import HomePage from './pages/HomePage'
+import GuidePage from './pages/GuidePage'
 
 function App() {
   return (
     <main className="page">
       <header className="site-header">
-        <h1>Walkthrough Hub</h1>
+        <h1>
+          <Link to="/">Walkthrough Hub</Link>
+        </h1>
         <p>Game guides, video walkthroughs, and the best tutorials from around the web.</p>
       </header>
 
-      <section className="guide-list">
-        {guides.map((guide) => (
-          <GuideCard key={guide.id} guide={guide} />
-        ))}
-      </section>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/guides/:guideId" element={<GuidePage />} />
+        <Route
+          path="*"
+          element={<p>Page not found. <Link to="/">Go home</Link></p>}
+        />
+      </Routes>
     </main>
   )
 }
