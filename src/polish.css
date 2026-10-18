@@ -55,3 +55,9 @@
   z-index: 0;
   pointer-events: none;
 }
+
+/* ---------- Full-width layout ---------- */
+.page {
+  max-width: none;
+  padding-inline: clamp(16px, 3vw, 48px);
+}
