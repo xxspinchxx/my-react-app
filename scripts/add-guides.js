@@ -39,6 +39,29 @@ const newGuides = [
     url: 'https://steamdeckhq.com/game-settings/',
     summary: 'Recommended in-game settings for getting smooth performance and battery life on the Deck.',
   },
+  {
+    id: 'steam-deck-beginners-video',
+    game: 'Steam Deck',
+    title: 'Steam Deck Getting Started Guide',
+    type: 'video',
+    author: 'Patrick Hat Trick',
+    videoId: 'AABAe3pdK-k',
+    summary: 'A step-by-step setup guide covering settings, performance, Desktop Mode, and troubleshooting.',
+    sections: [
+      {
+        heading: 'Set up the essentials',
+        text: 'Install the key apps, choose where games install, and adjust your controller settings.',
+      },
+      {
+        heading: 'Tune performance',
+        text: 'Use the Quick Access menu, the performance overlay, per-game profiles, and frame rate caps.',
+      },
+      {
+        heading: 'Explore Desktop Mode',
+        text: 'Install apps, add non-Steam games, transfer files, and find the folders that matter.',
+      },
+    ],
+  },
 ]
 
 for (const guide of newGuides) {

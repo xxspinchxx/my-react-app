@@ -2,10 +2,10 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Anyone can read guides. Nobody can change them from the website (yet).
     match /guides/{guideId} {
       allow read: if true;
-      allow write: if false;
+      // TEMPORARY: writes allowed until Oct 20, 2026, then blocked automatically
+      allow write: if request.time < timestamp.date(2026, 10, 20);
     }
   }
 }
