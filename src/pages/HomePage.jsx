@@ -2,6 +2,21 @@ import { useState } from 'react'
 import { Link, useSearchParams } from 'react-router'
 import { useGuides } from '../data/useGuides'
 import TypeBadge from '../components/TypeBadge'
+import './HomePage.css'
+
+// The three columns on the homepage
+const COLUMNS = [
+  { key: 'guides', title: 'Game guides' },
+  { key: 'steam', title: 'Steam community' },
+  { key: 'steam-deck', title: 'Steam Deck' },
+]
+
+// Decide which column a guide belongs in
+function columnFor(guide) {
+  if (guide.game === 'Steam Deck') return 'steam-deck'
+  if (guide.url?.includes('steamcommunity.com')) return 'steam'
+  return 'guides'
+}
 
 function GuideCard({ guide }) {
   const isExternal = guide.type === 'link'
@@ -89,15 +104,30 @@ export default function HomePage() {
         {visibleGuides.length} of {guides.length} guides
       </p>
 
-      {visibleGuides.length === 0 ? (
-        <p className="no-results">No guides match your search.</p>
-      ) : (
-        <section className="guide-list">
-          {visibleGuides.map((guide) => (
-            <GuideCard key={guide.id} guide={guide} />
-          ))}
-        </section>
-      )}
+      <div className="guide-columns">
+        {COLUMNS.map((column) => {
+          const items = visibleGuides.filter((guide) => columnFor(guide) === column.key)
+
+          return (
+            <section key={column.key} className="guide-column">
+              <h2 className="column-title">
+                {column.title}
+                <span className="column-count">{items.length}</span>
+              </h2>
+
+              {items.length === 0 ? (
+                <p className="column-empty">Nothing matches here.</p>
+              ) : (
+                <div className="column-list">
+                  {items.map((guide) => (
+                    <GuideCard key={guide.id} guide={guide} />
+                  ))}
+                </div>
+              )}
+            </section>
+          )
+        })}
+      </div>
     </>
   )
 }

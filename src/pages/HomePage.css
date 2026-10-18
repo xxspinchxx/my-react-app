@@ -1,0 +1,43 @@
+/* ---------- Three columns of guides ---------- */
+
+.guide-columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 24px;
+  margin-top: 18px;
+}
+
+.column-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 0 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--orange);
+  font-size: 1.2rem;
+}
+
+.column-count {
+  color: var(--blue);
+  font-size: 1rem;
+}
+
+.column-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.column-empty {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+
+/* Stack the columns on narrow screens */
+@media (max-width: 860px) {
+  .guide-columns {
+    grid-template-columns: 1fr;
+  }
+}
